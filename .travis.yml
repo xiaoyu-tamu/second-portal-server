@@ -1,0 +1,24 @@
+language: node_js
+
+node_js:
+  - "8"
+
+sudo: required
+
+before_deploy:
+  "npm run deploy"
+
+deploy:
+  provider: elasticbeanstalk
+  access_key_id: $ACCESSKEYID
+  secret_access_key:
+    secure: "$SECRETACCESSKEY"
+  region: "us-west-1"  
+  app: "second-portal-server"
+  env: "second-portal-server-dev"
+  zip_file: "dist/second-portal-server.zip"
+  bucket_name: "elasticbeanstalk-us-west-1-358858503326"
+  bucket_path: "second-portal-server-dev"
+  skip_cleanup: true
+  on:
+    branch: master
