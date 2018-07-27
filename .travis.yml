@@ -18,7 +18,7 @@ deploy:
   env: "second-portal-server-dev"
   zip_file: "dist/second-portal-server.zip"
   bucket_name: "elasticbeanstalk-us-west-1-358858503326"
-  bucket_path: "second-portal-server-dev"
+  bucket_path: "second-portal-server/dev"
   skip_cleanup: true
   on:
     branch: master
