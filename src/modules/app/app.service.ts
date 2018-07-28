@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import * as path from 'path';
 import * as fs from 'fs';
-import { PackageJson } from './app.interfaces';
+import { PackageJson } from './app.interface';
 
 @Injectable()
 export class AppService {
