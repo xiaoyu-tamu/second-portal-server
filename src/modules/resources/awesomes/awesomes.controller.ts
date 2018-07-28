@@ -1,31 +1,33 @@
 import { Controller, Get, Param, Post, Body, Delete, Put } from '@nestjs/common';
 import { BaseController } from '../controller.interface';
-import { create } from 'domain';
+import { AwesomesService } from './awesomes.service';
 
-@Controller('awesomes')
+@Controller('api/awesomes')
 export class AwesomesController implements BaseController {
+  constructor(private readonly awesomesService: AwesomesService) {}
+
   @Get()
   findAll() {
-    return `findAll route works`;
+    return this.awesomesService.findAll();
   }
 
   @Get(':id')
   findById(@Param('id') id: string) {
-    return `findById route works, id: ${id}`;
+    return this.awesomesService.findById(id);
   }
 
   @Post()
-  create(@Body() body) {
-    return `create route works, body: ${body}`;
+  create(@Body() body: any) {
+    return this.awesomesService.create(body);
   }
 
   @Delete(':id')
   delete(@Param('id') id: string) {
-    return `delete route works, id: ${id}`;
+    return this.awesomesService.delete(id);
   }
 
   @Put(':id')
-  update(@Param('id') id: string, @Body() body) {
-    return `update route works, id: ${id} body: ${body}`;
+  update(@Param('id') id: string, @Body() body: any) {
+    return this.awesomesService.update({ _id: id }, body);
   }
 }
