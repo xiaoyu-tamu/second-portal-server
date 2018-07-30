@@ -1,6 +1,7 @@
 import { Controller, Get, Param, Post, Body, Delete, Put } from '@nestjs/common';
 import { BaseController } from '../controller.interface';
 import { AwesomesService } from './awesomes.service';
+import { CreateAwesomeDto } from './metadata/awesome.dto';
 
 @Controller('api/awesomes')
 export class AwesomesController implements BaseController {
@@ -17,7 +18,7 @@ export class AwesomesController implements BaseController {
   }
 
   @Post()
-  create(@Body() body: any) {
+  create(@Body() body: CreateAwesomeDto) {
     return this.awesomesService.create(body);
   }
 
